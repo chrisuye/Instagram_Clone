@@ -1,9 +1,9 @@
 import mongoose from "mongoose"
 
-const postSchema = mongoose.Schema({
+const commentSchema = mongoose.Schema({
+    imageId: String,
     userName: String,
-    image: String,
-    description: String,
+    comment: String,
     likes: {
         type: Number,
         default: 0
@@ -14,7 +14,6 @@ const postSchema = mongoose.Schema({
     }
 })
 
-const UserPosts = mongoose.model("UserPosts", postSchema)
+const UserComments = mongoose.model("UserComments", commentSchema)
 
-export default UserPosts
-
+export default UserComments
