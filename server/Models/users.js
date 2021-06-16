@@ -7,6 +7,7 @@ const userSchema = mongoose.Schema({
     fullName: String,
     image: String,
     bio: String,
+    friends: [String],
     likedImages: [String]
 })
 

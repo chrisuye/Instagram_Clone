@@ -5,13 +5,24 @@ import mongoose from "mongoose";
 
 export const signUpUser = async (req, res) => {
     const user = req.body
+    const { userName } = user
 
     const newUser = new Users(user)
 
     try {
-        await newUser.save()
+        
+        const checkUser = await Users.find({userName: userName})
 
-        res.status(201).json(newUser)
+        if (checkUser.length > 0) {
+            res.status(200).json({
+                status: false,
+                message: 'userName already exists'
+            })
+        } else {
+            await newUser.save()
+
+            res.status(201).json(newUser)
+        }
 
     } catch (error) {
         res.status(409).json({message: error.message})
@@ -19,7 +30,31 @@ export const signUpUser = async (req, res) => {
 }
 
 export const signInuser = async (req, res) => {
-    
+    const { userName, password } = req.body
+
+    try {
+        const user = await Users.find({userName: userName})
+        
+        if (user.length > 0) {
+            if (user[0].password === password) {
+                res.status(200).json({
+                    status: true,
+                    message: "Success"
+                })
+            } else {
+                res.status(200).json({
+                    status: false,
+                    message: "Password does not match"
+                })
+            }
+        } else res.status(200).json({
+            status: false,
+            message: "userName does not exist"
+        })
+
+    } catch (error) {
+        res.status(404).json({message: error.message})
+    }
 }
 
 export const getUsers = async (req, res) => {
@@ -35,15 +70,22 @@ export const getUsers = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     const {id: _id} = req.params
-    console.log(_id)
 
     const user = req.body
-    console.log(user)
 
-    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message: 'Id is invalid'})
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Id is invalid')
 
     const updatedUser = await Users.findByIdAndUpdate(_id, {...user, _id}, {new: true})
     res.json(updatedUser)
+}
+
+export const deleteUser = async (req, res) => {
+    const {id: _id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Id is invalid')
+
+    await Users.findByIdAndRemove(_id)
+    res.json({message: `User with Id ${_id} has been deleted`})
 }
 
 export const postImage = async (req, res) => {
@@ -75,10 +117,20 @@ export const updateImage = async (req, res) => {
     const {id: _id} = req.params
     const image = req.body
 
-    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message: 'Id is Invalid'})
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Id is invalid')
 
     const updatedImage = await UserPosts.findByIdAndUpdate(_id, {...image, _id}, {new: true})
     res.json(updatedImage)
+}
+
+export const deleteImage = async (req, res) => {
+    const {id: _id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Id is invalid')
+
+    await UserPosts.findByIdAndRemove(_id)
+
+    res.json({message: `Image with Id ${_id} has been deleted`})
 }
 
 export const postComment = async (req, res) => {
@@ -110,8 +162,18 @@ export const updateComment = async (req, res) => {
     const {id: _id} = req.params
     const comment = req.body
 
-    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).json({message: 'Id is invalid'})
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Id is invalid')
 
     const updatedComment = await UserComments.findByIdAndUpdate(_id, {...comment, _id}, {new: true})
     res.json(updatedComment)
+}
+
+export const deleteComment = async (req, res) => {
+    const {id: _id} = req.params
+
+    if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Id is invalid')
+
+    await UserComments.findByIdAndRemove(_id)
+
+    res.json({message: `Comment with Id ${_id} has been deleted`})
 }
