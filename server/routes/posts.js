@@ -18,7 +18,7 @@ import {
 const router = express.Router()
 
 router.post('/', signUpUser)
-router.get('/signin', signInuser)
+router.post('/signin', signInuser)
 router.get('/', getUsers)
 router.patch('/:id', updateUser)
 router.delete('/:id', deleteUser)

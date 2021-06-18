@@ -21,7 +21,10 @@ export const signUpUser = async (req, res) => {
         } else {
             await newUser.save()
 
-            res.status(201).json(newUser)
+            res.status(200).json({
+                status: true,
+                message: "Success"
+            })
         }
 
     } catch (error) {
