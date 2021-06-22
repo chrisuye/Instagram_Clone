@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
-import { signUp, signInUser } from './actions/users'
+import { signUp, signInUser } from './actions/userAuto'
+import { fetchUsers, updateUser, deleteUser } from './actions/users'
+import { postComment, fetchComments, updateComment, deleteComment } from './actions/comments'
+import { postImage, fetchImages, updateImage, deleteImage } from './actions/images'
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react';
 
@@ -18,6 +21,38 @@ const App = () => {
   // const user =  useSelector((state) => state.userAuto)
   // console.log(user)
   // console.log("check")
+
+  
+
+  // const [user, setUser] = useState(null)
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchUsers())
+  // }, [user, dispatch])
+
+  // const users = useSelector(state => state.users)
+  // console.log(users)
+
+  // const [comment, setcomment] = useState(null)
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchComments())
+  // }, [comment, dispatch])
+
+  // const comments = useSelector(state => state.comments)
+  // console.log(comments)
+
+  // const [image, setImage] = useState(null)
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(fetchImages())
+  // }, [image, dispatch])
+
+  // const images = useSelector(state => state.images)
+  // console.log(images)
 
   return (
     <div className="App">

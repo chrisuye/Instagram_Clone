@@ -1,12 +1,12 @@
 import * as api from '../api/api'
 import * as actions from '../constants/actions'
 
-export const signUp = (user) => async(dispatch) => {
+export const fetchUsers = () => async(dispatch) => {
     try {
-        const { data } = await api.signUpUser(user)
-        
+        const { data } = await api.fetchUsers()
+
         dispatch({
-            type: actions.SIGNUP,
+            type: actions.FETCHUSERS,
             payload: data
         })
     } catch (error) {
@@ -14,12 +14,26 @@ export const signUp = (user) => async(dispatch) => {
     }
 }
 
-export const signInUser = (user) => async(dispatch) => {
+export const updateUser = (id, user) => async(dispatch) => {
     try {
-        const { data } = await api.signIn(user)
+        const { data } = await api.updateUser(id, user)
+
         dispatch({
-            type: actions.SIGNINUSER,
+            type: actions.UPDATEUSER,
             payload: data
+        })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const deleteUser = (id) => async(dispatch) => {
+    try {
+        await api.deleteUser(id)
+
+        dispatch({
+            type: actions.DELETEUSER,
+            payload: id
         })
     } catch (error) {
         console.log(error.message)
