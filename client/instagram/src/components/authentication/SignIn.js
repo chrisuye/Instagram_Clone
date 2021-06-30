@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { signInUser } from '../../actions/userAuto';
+import './SignIn.css'
 
 
 
@@ -22,19 +23,22 @@ const SignIn = () => {
         dispatch(signInUser(user))
     }
 
+    const handleSignUp = (e) => {
+        history.push('/signup')
+    }
+
     if (status) {
          history.push('/homepage')
     }
 
     return ( 
-        <div>
-            <input type='text' onChange={(e) => setUser({...user, userName: e.target.value})}/>
-            <input type='password' onChange={(e) => setUser({...user, password: e.target.value})}/>
-            <button onClick={handleLogIn}>Log in</button>
-            <Link to='/signup'>
-                <button>Sign up</button>
-            </Link>
-        </div>
+        <form>
+            <h1 className='form'>Instagram</h1>
+            <input className='form' type='text' placeholder='Username' onChange={(e) => setUser({...user, userName: e.target.value})}/>
+            <input className='form' type='password' placeholder='Password' onChange={(e) => setUser({...user, password: e.target.value})}/>
+            <button onClick={handleLogIn}>Log In</button>
+            <button onClick={handleSignUp}>Sign up</button>
+        </form>
      );
 }
  

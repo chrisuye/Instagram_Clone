@@ -1,6 +1,4 @@
-import logo from './logo.svg';
 import './App.css';
-import { signUp, signInUser } from './actions/userAuto'
 import { fetchUsers, updateUser, deleteUser } from './actions/users'
 import { postComment, fetchComments, updateComment, deleteComment } from './actions/comments'
 import { postImage, fetchImages, updateImage, deleteImage } from './actions/images'

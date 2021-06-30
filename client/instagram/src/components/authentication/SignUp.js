@@ -29,13 +29,15 @@ const SignUp = (props) => {
     }
 
     return ( 
-        <div>
-            <input type='text' onChange={(e) => setNewUser({...newUser, userName: e.target.value})}/>
-            <input type='password' onChange={(e) => setNewUser({...newUser, password: e.target.value})}/>
-            <input type='text' onChange={(e) => setNewUser({...newUser, email: e.target.value})}/>
-            <input type='text' onChange={(e) => setNewUser({...newUser, fullName: e.target.value})}/>
+        <form>
+            <h1 className='form'>Instagram</h1>
+            <h3 className='form'>Sign up to see photos and videos from your friends.</h3>
+            <input className='form' placeholder='Username' type='text' onChange={(e) => setNewUser({...newUser, userName: e.target.value})}/>
+            <input className='form' placeholder='Password' type='password' onChange={(e) => setNewUser({...newUser, password: e.target.value})}/>
+            <input className='form' placeholder='Email' type='email' onChange={(e) => setNewUser({...newUser, email: e.target.value})}/>
+            <input className='form' placeholder='Fullname' type='text' onChange={(e) => setNewUser({...newUser, fullName: e.target.value})}/>
             <button onClick={handleSignUp}>Sign up</button>
-        </div>
+        </form>
      );
 }
  
