@@ -6,6 +6,10 @@ import { postComment, fetchComments, updateComment, deleteComment } from './acti
 import { postImage, fetchImages, updateImage, deleteImage } from './actions/images'
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import SignIn from './components/authentication/SignIn';
+import SignUp from './components/authentication/SignUp';
+import HomePage from './components/HomePage';
 
 const App = () => {
   // const [userName, setUserName] = useState(null)
@@ -55,22 +59,13 @@ const App = () => {
   // console.log(images)
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route exact path='/' component={SignIn}/>
+        <Route exact path='/signup' component={SignUp}/>
+        <Route exact path='/homepage' component={HomePage}/>
+      </Switch>
+    </Router>
   );
 }
 
