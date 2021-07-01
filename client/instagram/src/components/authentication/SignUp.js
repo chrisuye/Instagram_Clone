@@ -25,6 +25,7 @@ const SignUp = (props) => {
     }
 
     if (status) {
+        sessionStorage.setItem('user', newUser.userName)
         history.push('/homepage')
     }
 
@@ -36,7 +37,7 @@ const SignUp = (props) => {
             <input className='form' placeholder='Password' type='password' onChange={(e) => setNewUser({...newUser, password: e.target.value})}/>
             <input className='form' placeholder='Email' type='email' onChange={(e) => setNewUser({...newUser, email: e.target.value})}/>
             <input className='form' placeholder='Fullname' type='text' onChange={(e) => setNewUser({...newUser, fullName: e.target.value})}/>
-            <button onClick={handleSignUp}>Sign up</button>
+            <button className='form' onClick={handleSignUp}>Sign up</button>
         </form>
      );
 }

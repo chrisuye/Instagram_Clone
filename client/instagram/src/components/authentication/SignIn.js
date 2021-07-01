@@ -28,6 +28,7 @@ const SignIn = () => {
     }
 
     if (status) {
+        sessionStorage.setItem('user', user.userName)
          history.push('/homepage')
     }
 
@@ -36,8 +37,8 @@ const SignIn = () => {
             <h1 className='form'>Instagram</h1>
             <input className='form' type='text' placeholder='Username' onChange={(e) => setUser({...user, userName: e.target.value})}/>
             <input className='form' type='password' placeholder='Password' onChange={(e) => setUser({...user, password: e.target.value})}/>
-            <button onClick={handleLogIn}>Log In</button>
-            <button onClick={handleSignUp}>Sign up</button>
+            <button className='form' onClick={handleLogIn}>Log In</button>
+            <button className='form' onClick={handleSignUp}>Sign up</button>
         </form>
      );
 }
