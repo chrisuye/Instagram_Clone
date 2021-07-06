@@ -1,18 +1,12 @@
 import React from 'react';
 
-const SidePanel = (props) => {
+const SidePanel = ({ user }) => {
     return ( 
         <div className='sidePanel'>
-            <p>user image</p>
-            <p>user name</p>
-            <p>name</p>
-            <button>Switch</button>
-            <p>Suggestions For You</p>
-            <button>See All</button>
-            <p>user image</p>
-            <p>user name</p>
-            <p>followed by+</p>
-            <button>follow</button>
+            <p className='sidePanel'>{user.image}</p>
+            <p className='sidePanel'>{user.userName}</p>
+            <button className='sidePanelFollow'>follow</button>
+            <p className='sidePanelFollow'>followed by+</p>
         </div>
      );
 }

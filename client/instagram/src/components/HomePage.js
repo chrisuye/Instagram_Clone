@@ -1,3 +1,4 @@
+import './homePage.css'
 import React, { useState, useEffect }  from 'react';
 import Card from './Card';
 import SidePanel from './SidePanel';
@@ -5,6 +6,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchComments } from '../actions/comments';
 import { fetchUsers } from '../actions/users'
 import { fetchImages } from '../actions/images'
+import Logo from '../images/logo.svg'
+import Home from '../images/home.svg'
+import Message from '../images/message.svg'
+import Add from '../images/add.svg'
+import Nav from '../images/nav.svg'
+import Heart from '../images/heart.svg'
 
 const HomePage = (props) => {
     const dispatch = useDispatch()
@@ -18,16 +25,12 @@ const HomePage = (props) => {
     }, [user, dispatch])
 
     const users = useSelector(state => state.users)
-    console.log(users)
 
     const [comment, setComment] = useState(null)
 
     useEffect(() => {
         dispatch(fetchComments())
     }, [comment, dispatch])
-
-    const comments = useSelector(state => state.comments)
-    console.log(comments)
 
     const [image, setImage] = useState(null)
 
@@ -36,25 +39,40 @@ const HomePage = (props) => {
     }, [image, dispatch])
 
     const images = useSelector(state => state.images)
-    console.log(images)
+    
 
     return ( 
         <div className='homePage'>
-            <nav>
-                <h3 className='navBar'> Instagram </h3>
-                <input placeholder='search' type='text'></input>
-                <button>Home</button>
-                <button>Message</button>
-                <button>Add</button>
-                <button>Discover</button>
-                <button>Likes</button>
-                <button>Profile</button>
+            <nav className='nav'>
+                <ul>
+                    <li><img className='navBar' alt='Instagram logo' src={Logo} width='150px' height='50px'/></li>
+                    <li><input className='navBar' placeholder='search' type='text'></input></li>
+                    <li><button className='navBar'><img alt='Home' src={Home} width='30px' height='30px'/></button></li>
+                    <li><button className='navBar'><img alt='Message' src={Message} width='30px' height='30px'/></button></li>
+                    <li><button className='navBar'><img alt='Add' src={Add} width='30px' height='30px'/></button></li>
+                    <li><button className='navBar'><img alt='Nav' src={Nav} width='30px' height='30px'/></button></li>
+                    <li><button className='navBar'><img alt='Heart' src={Heart} width='30px' height='30px'/></button></li>
+                    <li><button className='navBar'>Profile</button></li>
+                </ul>
             </nav>
             <div className='homeLeft'>
-                <Card setUser setComment setImage/>
+                { images.map(image => <Card image={image}/>)}
+    
             </div>
             <div className='homeRight'>
-                <SidePanel/>
+                <p className='homeRightImage'>user image </p>
+                <p className='homeRightUser'>{currentUser}</p>
+                <button className='homeRightSwitch'>Switch</button>
+                <p className='homeRightName'>name</p>
+                <p className='homeRightSug'>Suggestions For You</p>
+                <button className='homeRightAll'>See All</button>
+                { users.map(user => {
+                    if(user.userName !== currentUser) {
+                        return <SidePanel user={user}/>
+                    }
+                    return null
+                })}
+                
             </div>
         </div>
      );
