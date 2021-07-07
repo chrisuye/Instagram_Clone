@@ -6,12 +6,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchComments } from '../actions/comments';
 import { fetchUsers } from '../actions/users'
 import { fetchImages } from '../actions/images'
-import Logo from '../images/logo.svg'
-import Home from '../images/home.svg'
-import Message from '../images/message.svg'
-import Add from '../images/add.svg'
-import Nav from '../images/nav.svg'
-import Heart from '../images/heart.svg'
+import Nav from './Nav';
+import AddPopup from './popups/AddPopup';
+import { postImage } from '../api/api';
 
 const HomePage = (props) => {
     const dispatch = useDispatch()
@@ -39,22 +36,16 @@ const HomePage = (props) => {
     }, [image, dispatch])
 
     const images = useSelector(state => state.images)
+
+    const [addImage, setAddImage] = useState(false)
     
 
     return ( 
         <div className='homePage'>
-            <nav className='nav'>
-                <ul>
-                    <li><img className='navBar' alt='Instagram logo' src={Logo} width='150px' height='50px'/></li>
-                    <li><input className='navBar' placeholder='search' type='text'></input></li>
-                    <li><button className='navBar'><img alt='Home' src={Home} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'><img alt='Message' src={Message} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'><img alt='Add' src={Add} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'><img alt='Nav' src={Nav} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'><img alt='Heart' src={Heart} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'>Profile</button></li>
-                </ul>
-            </nav>
+            <Nav
+            add={addImage}
+            setAdd={setAddImage}
+            />
             <div className='homeLeft'>
                 { images.map(image => <Card image={image}/>)}
     
@@ -74,6 +65,11 @@ const HomePage = (props) => {
                 })}
                 
             </div>
+
+            <AddPopup 
+            trigger={addImage} 
+            setTrigger={setAddImage}
+            />
         </div>
      );
 }

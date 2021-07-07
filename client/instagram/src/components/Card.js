@@ -8,10 +8,7 @@ import Send from '../images/send.svg'
 import Save from '../images/save.svg'
 
 const Card = ({image}) => {
-    console.log("check")
-    console.log(image)
     const comments = useSelector(state => state.comments)
-    console.log(comments)
     
     return ( 
         <div className='card'>
@@ -20,7 +17,7 @@ const Card = ({image}) => {
                 <p className='cardHeader' >{image.userName}</p>
                 <button className='cardHeader'><img alt='Options' src={Option} width='25px' height='25px' /></button>
             </div>
-            <p>{image.image}</p>
+            <img alt='Post' src={image.image} width='600px' height='600px'/>
             <div className='cardButtons'>
                 <button className='cardButtons'><img alt='Like' src={Like} width='20px' height='20px' /></button>
                 <button className='cardButtons'><img alt='Comment' src={CommentSvg} width='20px' height='20px' /></button>
@@ -29,8 +26,6 @@ const Card = ({image}) => {
             </div>
             <p>{image.likes} Likes</p>
             { comments.map(comment => {
-                console.log(image._id === comment.imageId)
-                console.log(comment.imageId)
                 if (comment.imageId === image._id) {
                     return <Comment comment={comment}/>
                 }

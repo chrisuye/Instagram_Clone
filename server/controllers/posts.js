@@ -110,7 +110,7 @@ export const getImages = async (req, res) => {
     try {
         const images = await UserPosts.find()
 
-        res.status(200).json(images)
+        res.status(200).json(images.reverse())
     } catch (error) {
         res.status(404).json({message: error.message})
     }
