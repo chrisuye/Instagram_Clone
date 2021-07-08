@@ -1,0 +1,32 @@
+div.suggestion{
+    position: relative;
+}
+
+div.suggestions{
+    position: absolute;
+    top: 80px;
+    background-color: white;
+    left: 30%;
+    width: 500px;
+}
+
+div.suggestionsInner {
+    position: relative;
+}
+
+button.suggestionsFollow {
+    position: absolute;
+    right: 10px;
+    background-color: rgb(65, 147, 239);
+    color: white;
+    font-weight: bold;
+}
+
+p.suggestionsFollow {
+    font-size: small;
+    font-weight: lighter;
+}
+
+img.suggestionsImage {
+    border-radius: 50%;
+}

@@ -8,12 +8,14 @@ import { fetchUsers } from '../actions/users'
 import { fetchImages } from '../actions/images'
 import Nav from './Nav';
 import AddPopup from './popups/AddPopup';
-import { postImage } from '../api/api';
+import {useHistory} from 'react-router-dom'
+import DefaultProfile from '../images/defaultProfile.png'
 
 const HomePage = (props) => {
     const dispatch = useDispatch()
     const currentUser = sessionStorage.getItem('user')
-    console.log(currentUser)
+    
+    let history = useHistory()
 
     const [user, setUser] = useState(null)
 
@@ -38,6 +40,10 @@ const HomePage = (props) => {
     const images = useSelector(state => state.images)
 
     const [addImage, setAddImage] = useState(false)
+
+    const navigateTo = (location) => {
+        history.push(location)
+    }
     
 
     return ( 
@@ -51,12 +57,12 @@ const HomePage = (props) => {
     
             </div>
             <div className='homeRight'>
-                <p className='homeRightImage'>user image </p>
+                <img className='homeRightImage' alt='Profile' src={DefaultProfile} width='50px' height='50px'/>
                 <p className='homeRightUser'>{currentUser}</p>
                 <button className='homeRightSwitch'>Switch</button>
                 <p className='homeRightName'>name</p>
                 <p className='homeRightSug'>Suggestions For You</p>
-                <button className='homeRightAll'>See All</button>
+                <button className='homeRightAll' onClick={() => navigateTo('/explore/suggestion')}>See All</button>
                 { users.map(user => {
                     if(user.userName !== currentUser) {
                         return <SidePanel user={user}/>

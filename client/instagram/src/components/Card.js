@@ -7,6 +7,7 @@ import CommentSvg from '../images/comment.svg'
 import Send from '../images/send.svg'
 import Save from '../images/save.svg'
 import Face from '../images/face.svg'
+import DefaultProfile from '../images/defaultProfile.png'
 
 const Card = ({image}) => {
     const comments = useSelector(state => state.comments)
@@ -14,7 +15,7 @@ const Card = ({image}) => {
     return ( 
         <div className='card'>
             <div className='cardHeader'>
-                <button className='cardHeader' >Profile</button>
+                <button className='cardHeader' ><img className='cardHeader' alt='Profile' src={DefaultProfile} width='30px' height='30px'/></button>
                 <p className='cardHeader' >{image.userName}</p>
                 <button className='cardHeaderOption'><img alt='Options' src={Option} width='30px' height='30px' /></button>
             </div>

@@ -64,6 +64,10 @@ button.cardHeader, p.cardHeader {
     margin-bottom: 10px;
 }
 
+button.cardHeader {
+    background-color: transparent;
+}
+
 div.cardHeader {
     position: relative;
 }
@@ -99,8 +103,12 @@ input.CommentWrite {
     width: 80%;
 }
 
-p.homeRightUser, p.homeRightImage {
+p.homeRightUser{
     display: inline;
+}
+
+img.homeRightImage {
+    border-radius: 50%;
 }
 
 p.homeRightName {
@@ -167,4 +175,17 @@ button.CommentWritePost {
     background-color: transparent;
     color: rgb(65, 147, 239);
     font-weight: bold;
+}
+
+img.cardHeader {
+    border-radius: 50px;
+}
+
+img.sidePanel {
+    border-radius: 50px;
+}
+
+img.navBar {
+    border-radius: 50px;
+    display: inline;
 }
