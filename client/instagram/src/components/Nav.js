@@ -12,11 +12,11 @@ const Nav = (props) => {
                 <ul>
                     <li><img className='navBar' alt='Instagram logo' src={Logo} width='150px' height='50px'/></li>
                     <li><input className='navBar' placeholder='search' type='text'></input></li>
-                    <li><button className='navBar'><img alt='Home' src={Home} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'><img alt='Message' src={Message} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar' onClick={() => props.setAdd(true)}><img alt='Add' src={Add} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'><img alt='Nav' src={NavSVG} width='30px' height='30px'/></button></li>
-                    <li><button className='navBar'><img alt='Heart' src={Heart} width='30px' height='30px'/></button></li>
+                    <li><button className='navBar'><img alt='Home' src={Home} width='35px' height='35px'/></button></li>
+                    <li><button className='navBar'><img alt='Message' src={Message} width='35px' height='35px'/></button></li>
+                    <li><button className='navBar' onClick={() => props.setAdd(true)}><img alt='Add' src={Add} width='35px' height='35px'/></button></li>
+                    <li><button className='navBar'><img alt='Nav' src={NavSVG} width='35px' height='35px'/></button></li>
+                    <li><button className='navBar'><img alt='Heart' src={Heart} width='35px' height='35px'/></button></li>
                     <li><button className='navBar'>Profile</button></li>
                 </ul>
             </nav>

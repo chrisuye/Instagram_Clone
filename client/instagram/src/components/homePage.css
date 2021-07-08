@@ -1,9 +1,11 @@
 nav.nav {
     background-color: rgb(255, 255, 255);
-    position: relative;
+    position: fixed;
     display: inline;
+    width: 100%;
     z-index: 2;
 }
+
 button {
     cursor: pointer;
     border: none;
@@ -37,6 +39,14 @@ button.navBar {
 
 div.homeLeft, div.homeRight {
     float: left;
+    padding-top: 60px;
+}
+
+div.homeRight {
+    position: fixed;
+    right: 300px;
+    overflow: hidden;
+    height: 500px;
 }
 
 div.card {
@@ -50,15 +60,27 @@ div.card {
 
 button.cardHeader, p.cardHeader {
     display: inline;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-button.cardHeader {
-    margin-right: 10px;
+div.cardHeader {
+    position: relative;
+}
+
+button.cardHeaderOption {
+    position: absolute;
     background-color: transparent;
+    top: 0px;
+    right: 16px;
 }
 
-p.cardHeader {
+/* p.cardHeader {
     margin-right: 400px;
+} */
+
+div.cardButtons {
+    position: relative;
 }
 
 button.cardButtons {
@@ -67,7 +89,9 @@ button.cardButtons {
 }
 
 button.cardButtonsSave {
-    margin-left: 310px;
+    position: absolute;
+    top: 0;
+    right: 16px;
     background-color: transparent;
 }
 
@@ -85,21 +109,24 @@ p.homeRightName {
 }
 
 button.homeRightSwitch {
-    margin-left: 50px;
+    position: absolute;
+    right: 0px;
     color: rgb(65, 147, 239);
     font-weight: bolder;
     background-color: transparent;
 }
 
 button.homeRightAll {
-    margin-left: 50px;
+    position: absolute;
+    right: 0px;
     color: rgb(39, 39, 39);
     font-weight: bolder;
     background-color: transparent;
 }
 
 button.sidePanelFollow {
-    margin-left: 50px;
+    position: absolute;
+    right: 0px;
     color: rgb(65, 147, 239);
     font-weight: bolder;
     background-color: transparent;
@@ -118,12 +145,13 @@ p.homeRightSug {
 }
 
 div.sidePanel {
+    position: relative;
     margin-top: 20px;
 }
 
 p.sidePanel {
     display: inline;
-    margin-right: 10px;
+    margin-right: 50px;
 }
 
 p.sidePanelFollow {
