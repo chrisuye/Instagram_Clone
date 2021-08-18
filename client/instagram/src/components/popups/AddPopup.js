@@ -9,7 +9,7 @@ const AddPopup = (props) => {
     const currentUser = sessionStorage.getItem('user')
     const [post, setPost] = useState({
         userName: currentUser,
-        image: 'nothing sent2',
+        image: '',
         description: ''
     })
 

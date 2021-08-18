@@ -11,6 +11,19 @@
     align-items: center;
 }
 
+.postpopup {
+    position:fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, .2);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .popup-inner {
     position: relative;
     padding: 32px;
@@ -19,7 +32,21 @@
     background-color: white;
 }
 
+.postpopup-inner {
+    position: relative;
+    padding: 32px;
+    width: 100%;
+    max-width: 300px;
+    background-color: white;
+}
+
 .popup-inner .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+
+.postpopup-inner .post-close-btn {
     position: absolute;
     top: 16px;
     right: 16px;

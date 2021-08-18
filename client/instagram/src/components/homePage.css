@@ -99,6 +99,13 @@ button.cardButtonsSave {
     background-color: transparent;
 }
 
+p.cardButtonsViewMore {
+    font-size: small;
+    font-weight: lighter;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 input.CommentWrite {
     width: 80%;
 }

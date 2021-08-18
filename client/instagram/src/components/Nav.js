@@ -26,7 +26,7 @@ const Nav = (props) => {
                     <li><button className='navBar' onClick={() => props.setAdd(true)}><img alt='Add' src={Add} width='35px' height='35px'/></button></li>
                     <li><button className='navBar' onClick={() => navigateTo('/explore')}><img alt='Nav' src={NavSVG} width='35px' height='35px'/></button></li>
                     <li><button className='navBar'><img alt='Heart' src={Heart} width='35px' height='35px'/></button></li>
-                    <li><button className='navBar'>Profile</button></li>
+                    <li><button className='navBarProfile'><img alt='Profile' src={DefaultProfile} width='35px' height='35px'/></button></li>
                 </ul>
             </nav>
      );
