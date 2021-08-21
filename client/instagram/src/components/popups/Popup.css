@@ -46,8 +46,8 @@
     right: 16px;
 }
 
-.postpopup-inner .post-close-btn {
+.postpopup .post-close-btn {
     position: absolute;
-    top: 16px;
+    top: 80px;
     right: 16px;
 }

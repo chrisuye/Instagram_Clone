@@ -40,9 +40,10 @@ export const signInuser = async (req, res) => {
         
         if (user.length > 0) {
             if (user[0].password === password) {
+                console.log(user[0]._id)
                 res.status(200).json({
                     status: true,
-                    message: "Success"
+                    message: user[0]._id
                 })
             } else {
                 res.status(200).json({
@@ -77,9 +78,24 @@ export const updateUser = async (req, res) => {
     const user = req.body
 
     if (!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('Id is invalid')
-
-    const updatedUser = await Users.findByIdAndUpdate(_id, {...user, _id}, {new: true})
-    res.json(updatedUser)
+    //console.log(user)
+    const findUser = await Users.findOne({_id})
+    if (findUser.likedImages.includes(user.likedImages)) {
+        const update = findUser.likedImages.filter( image => image !== user.likedImages[0])
+        console.log(update)
+        const obj = {
+            likedImages: update
+        }
+        const updatedUser = await Users.findByIdAndUpdate(_id, {...obj, _id}, {new: true})
+        res.json(updatedUser)
+    } else {
+        const update = findUser.likedImages.concat(user.likedImages)
+        const obj = {
+            likedImages: update
+        }
+        const updatedUser = await Users.findByIdAndUpdate(_id, {...obj, _id}, {new: true})
+        res.json(updatedUser)
+    }
 }
 
 export const deleteUser = async (req, res) => {

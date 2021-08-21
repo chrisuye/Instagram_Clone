@@ -17,7 +17,7 @@ const HomePage = (props) => {
     
     let history = useHistory()
 
-    const [user, setUser] = useState(null)
+    const [user] = useState(null)
 
     useEffect(() => {
       dispatch(fetchUsers())
@@ -25,13 +25,13 @@ const HomePage = (props) => {
 
     const users = useSelector(state => state.users)
 
-    const [comment, setComment] = useState(null)
+    const [comment] = useState(null)
 
     useEffect(() => {
         dispatch(fetchComments())
     }, [comment, dispatch])
 
-    const [image, setImage] = useState(null)
+    const [image] = useState(null)
 
     useEffect(() => {
         dispatch(fetchImages())
@@ -44,7 +44,14 @@ const HomePage = (props) => {
     const navigateTo = (location) => {
         history.push(location)
     }
-    
+
+    let likedImages = []
+    // eslint-disable-next-line array-callback-return
+    users.map(user => {
+        if (user.userName === currentUser) {
+            likedImages = user.likedImages
+        }
+    })    
 
     return ( 
         <div className='homePage'>
@@ -53,7 +60,9 @@ const HomePage = (props) => {
             setAdd={setAddImage}
             />
             <div className='homeLeft'>
-                { images.map(image => <Card image={image}/>)}
+                { images.map(image => <Card 
+                image={image}
+                likes={likedImages}/>)}
     
             </div>
             <div className='homeRight'>

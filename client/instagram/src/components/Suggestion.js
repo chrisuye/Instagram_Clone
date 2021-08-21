@@ -8,7 +8,7 @@ import DefaultProfile from '../images/defaultProfile.png'
 const Suggestion = () => {
     let dispatch = useDispatch()
 
-    const [user, setUser] = useState(null)
+    const [user] = useState(null)
 
     useEffect(() => {
       dispatch(fetchUsers())

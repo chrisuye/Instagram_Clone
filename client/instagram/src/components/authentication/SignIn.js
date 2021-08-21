@@ -15,7 +15,7 @@ const SignIn = () => {
         password: ''
     })
 
-    let { status } =  useSelector((state) => state.userSignIn)
+    let { status, message } =  useSelector((state) => state.userSignIn)
 
     const handleLogIn = (e) => {
         e.preventDefault()
@@ -28,6 +28,7 @@ const SignIn = () => {
     }
 
     if (status) {
+        sessionStorage.setItem('id', message)
         sessionStorage.setItem('user', user.userName)
          history.push('/homepage')
     }
